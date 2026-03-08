@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tiger Empire fonts */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Tiger Empire — Dark Regal Theme */
+    --background: 0.1 0.01 30;
+    --foreground: 0.95 0.02 80;
+
+    --card: 0.13 0.015 30;
+    --card-foreground: 0.95 0.02 80;
+
+    --popover: 0.15 0.015 30;
+    --popover-foreground: 0.95 0.02 80;
+
+    /* Gold/Amber primary */
+    --primary: 0.75 0.17 65;
+    --primary-foreground: 0.1 0.01 30;
+
+    --secondary: 0.18 0.02 30;
+    --secondary-foreground: 0.85 0.05 80;
+
+    --muted: 0.16 0.015 30;
+    --muted-foreground: 0.55 0.05 60;
+
+    /* Warm amber accent */
+    --accent: 0.65 0.15 55;
+    --accent-foreground: 0.1 0.01 30;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.95 0.02 80;
+
+    --border: 0.22 0.03 50;
+    --input: 0.18 0.02 40;
+    --ring: 0.75 0.17 65;
+
+    /* Tiger gold token */
+    --gold: 0.75 0.17 65;
+    --gold-bright: 0.85 0.18 80;
+    --gold-dim: 0.55 0.12 55;
+    --ember: 0.6 0.19 40;
+
+    /* Sidebar tokens */
+    --sidebar: 0.12 0.012 30;
+    --sidebar-foreground: 0.95 0.02 80;
+    --sidebar-primary: 0.75 0.17 65;
+    --sidebar-primary-foreground: 0.1 0.01 30;
+    --sidebar-accent: 0.18 0.02 30;
+    --sidebar-accent-foreground: 0.85 0.05 80;
+    --sidebar-border: 0.22 0.03 50;
+    --sidebar-ring: 0.75 0.17 65;
+
+    --chart-1: 0.75 0.17 65;
+    --chart-2: 0.6 0.19 40;
+    --chart-3: 0.5 0.15 30;
+    --chart-4: 0.85 0.12 90;
+    --chart-5: 0.45 0.18 25;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Outfit", sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: oklch(var(--gold));
+  }
+
+  .bg-gold {
+    background-color: oklch(var(--gold));
+  }
+
+  .border-gold {
+    border-color: oklch(var(--gold));
+  }
+
+  .text-gold-bright {
+    color: oklch(var(--gold-bright));
+  }
+
+  .text-ember {
+    color: oklch(var(--ember));
+  }
+
+  .tiger-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--gold)) 0%,
+      oklch(var(--ember)) 100%
+    );
+  }
+
+  .tiger-text-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--gold-bright)) 0%,
+      oklch(var(--gold)) 50%,
+      oklch(var(--ember)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .empire-bg {
+    background-color: oklch(var(--background));
+    background-image:
+      radial-gradient(
+        ellipse 80% 60% at 50% -10%,
+        oklch(var(--ember) / 0.12) 0%,
+        transparent 60%
+      ),
+      repeating-linear-gradient(
+        45deg,
+        oklch(var(--gold) / 0.015) 0px,
+        oklch(var(--gold) / 0.015) 1px,
+        transparent 1px,
+        transparent 24px
+      );
+  }
+
+  .message-bubble-self {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--gold) / 0.25),
+      oklch(var(--ember) / 0.2)
+    );
+    border: 1px solid oklch(var(--gold) / 0.3);
+  }
+
+  .message-bubble-other {
+    background-color: oklch(var(--secondary));
+    border: 1px solid oklch(var(--border));
+  }
+
+  .room-card-hover {
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .room-card-hover:hover {
+    background-color: oklch(var(--muted));
+    border-color: oklch(var(--gold) / 0.4);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
